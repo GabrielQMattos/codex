@@ -18,7 +18,11 @@ let hero = {
 let enemies = [];
 let enemyTimer = 0;
 let backgroundOffset = 0;
-let gameState = 'running';
+// Start the game in upgrade state so the player must press the
+// "Começar" button to begin a run. Previously the game state was set
+// to running on load, which meant clicking the start button appeared
+// to do nothing.
+let gameState = 'upgrade';
 
 function heroDamage() {
     return 10 + swordLevel * 5;
@@ -180,8 +184,10 @@ document.getElementById('startRun').addEventListener('click', () => {
     hero.maxHealth = baseHealth + armorLevel * 20;
     hero.health = hero.maxHealth;
     enemies = [];
+    enemyTimer = 0;
     closeMenu();
 });
 
-updateMenuText();
+// Show the upgrade menu on load and wait for the player to start the run.
+openMenu();
 loop();
