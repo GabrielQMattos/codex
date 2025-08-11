@@ -25,6 +25,10 @@ canvas {
     color: #fff;
 }
 
+#upgradeMenu.hidden {
+    display: none;
+}
+
 .hidden {
     display: none;
 }
